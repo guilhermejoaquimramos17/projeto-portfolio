@@ -36,9 +36,12 @@ header {
   display: flex;
   justify-content: flex-end;
   align-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
-#menu ul {
+#menu ul { 
   list-style: none;
   display: flex;
   gap: 10px;
@@ -209,8 +212,82 @@ div#formacao-container {
   font-size: 1.2em;
 }
 
+#projeto-container {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+#projeto-container .projeto {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--fundo-principal);
+  padding: 10px;
+  margin-bottom: 20px;
+  border-left: 5px solid var(--destaque-inverso);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-left-width 0.3s, border-color 0.3s;
+}
+
+#projeto-container .projeto:hover {
+  border-left-width: 15px;
+  border-color: var(--destaque);
+}
+
+#projeto-container .foto {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+footer {
+  background-color: var(--destaque);
+  padding: 10px;
+  color: var(--texto-inverso);
+  text-align: center;
+}
+
+footer > a {
+  color: var(--texto-inverso);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+footer > a:hover {
+  color: var(--destaque-inverso);
+}
+
 @media screen and (min-width: 768px) {
+  main {
+    grid-template-columns: auto 300px 1fr auto;
+  }
+
+  section#ficha {
+    grid-column: 2 / 3;
+    height: fit-content;
+
+  }
+
+  section#detalhes {
+    grid-column: 3 / 4;
+  }
+
   #skill-container {
     grid-template-columns: 1fr 1fr;
+  }
+
+  #projeto-container .projeto {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+  #projeto-container .info {
+    max-width: 60%;
+  }
+
+  #projeto-container .foto {
+    max-width: 40%;
   }
 }
